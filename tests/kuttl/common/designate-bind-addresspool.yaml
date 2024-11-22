@@ -1,0 +1,17 @@
+# apiVersion: core.openstack.org/v1beta1
+# kind: OpenStackControlPlane
+# metadata:
+#   name: openstack-galera-network-isolation
+# spec:
+#   designate:
+#     template:
+#       designateBackendbind9:
+#         addressPool: internalapi
+#         replicas: 2
+apiVersion: designate.openstack.org/v1beta1
+kind: DesignateBackendbind9
+metadata:
+  name: designate-backendbind9
+spec:
+  addressPool: internalapi
+  replicas: 2

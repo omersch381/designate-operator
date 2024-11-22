@@ -1,0 +1,6 @@
+apiVersion: kuttl.dev/v1beta1
+kind: TestStep
+commands:
+  - script: |
+      cp ../../common/designate-bind-addresspool.yaml .
+      oc apply -n $NAMESPACE -f designate-bind-addresspool.yaml
