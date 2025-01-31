@@ -1,0 +1,12 @@
+apiVersion: kuttl.dev/v1beta1
+kind: TestStep
+commands:
+  - script: |
+      oc patch designate -n $NAMESPACE designate --type='json' -p='[{"op": "replace", "path": "/spec/designateAPI/replicas", "value":3}]'
+      oc patch designate -n $NAMESPACE designate --type='json' -p='[{"op": "replace", "path": "/spec/designateBackendbind9/replicas", "value":3}]'
+      oc patch designate -n $NAMESPACE designate --type='json' -p='[{"op": "replace", "path": "/spec/designateCentral/replicas", "value":3}]'
+      oc patch designate -n $NAMESPACE designate --type='json' -p='[{"op": "replace", "path": "/spec/designateMdns/replicas", "value":3}]'
+      oc patch designate -n $NAMESPACE designate --type='json' -p='[{"op": "replace", "path": "/spec/designateProducer/replicas", "value":3}]'
+      oc patch designate -n $NAMESPACE designate --type='json' -p='[{"op": "replace", "path": "/spec/designateUnbound/replicas", "value":3}]'
+      oc patch designate -n $NAMESPACE designate --type='json' -p='[{"op": "replace", "path": "/spec/designateWorker/replicas", "value":3}]'
+

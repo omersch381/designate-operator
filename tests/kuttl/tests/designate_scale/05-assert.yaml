@@ -1,8 +1,8 @@
 #
 # Check for:
 #
-# - Designate CR with all services scaled down to 1 replica
-# - 1 Pod for each Designate service
+# - Designate CR with all services scaled down to 0 replicas
+# - Designate Deployment with no pods
 #
 
 apiVersion: designate.openstack.org/v1beta1
@@ -13,94 +13,87 @@ metadata:
   name: designate
 spec:
   designateAPI:
-    replicas: 1
+    replicas: 0
   designateBackendbind9:
-    replicas: 1
+    replicas: 0
   designateCentral:
-    replicas: 1
+    replicas: 0
   designateMdns:
-    replicas: 1
+    replicas: 0
   designateProducer:
-    replicas: 1
+    replicas: 0
   designateUnbound:
-    replicas: 1
+    replicas: 0
   designateWorker:
-    replicas: 1
+    replicas: 0
 status:
-  designateAPIReadyCount: 1
-  designateBackendbind9ReadyCount: 1
-  designateCentralReadyCount: 1
-  designateMdnsReadyCount: 1
-  designateProducerReadyCount: 1
-  designateUnboundReadyCount: 1
-  designateWorkerReadyCount: 1
+  designateAPIReadyCount: 0
+  designateBackendbind9ReadyCount: 0
+  designateCentralReadyCount: 0
+  designateMdnsReadyCount: 0
+  designateProducerReadyCount: 0
+  designateUnboundReadyCount: 0
+  designateWorkerReadyCount: 0
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: designate-api
 spec:
-  replicas: 1
+  replicas: 0
 status:
-  availableReplicas: 1
+  availableReplicas: 0
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: designate-backendbind9
 spec:
-  replicas: 1
+  replicas: 0
 status:
-  availableReplicas: 1
+  availableReplicas: 0
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: designate-central
 spec:
-  replicas: 1
+  replicas: 0
 status:
-  availableReplicas: 1
+  availableReplicas: 0
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: designate-mdns
 spec:
-  replicas: 1
+  replicas: 0
 status:
-  availableReplicas: 1
+  availableReplicas: 0
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: designate-producer
 spec:
-  replicas: 1
+  replicas: 0
 status:
-  availableReplicas: 1
+  availableReplicas: 0
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: designate-unbound
 spec:
-  replicas: 1
+  replicas: 0
 status:
-  availableReplicas: 1
+  availableReplicas: 0
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: designate-worker
 spec:
-  replicas: 1
+  replicas: 0
 status:
-  availableReplicas: 1
----
-apiVersion: kuttl.dev/v1beta1
-kind: TestAssert
-commands:
-  - script: |
-      ../../common/validate-predictable-ips.sh 1
-      ../../common/validate-pools-yaml.sh 1
+  availableReplicas: 0
